@@ -1,4 +1,3 @@
-
 body {
     font-family: 'Orbitron', sans-serif;
     margin: 0;
@@ -7,13 +6,10 @@ body {
     background-size: cover;
     color: #C0C0C0;
 }
-
-header, .subheading, .media-card p, .search-list .search-list-item, .movie-info .rated, .movie-info .genre {
-    background-color: #1A1E23; /* Dark background */
-    color: #C0C0C0; /* Light text color */
-}
-
 header {
+     background-color: #1A1E23; /* Dark background */
+    
+    color: #C0C0C0; /* Light text color */
     text-align: center;
     padding: 20px 0;
      background: #0a0f1d url('./hts2.jpeg') no-repeat center center fixed; 
@@ -22,50 +18,31 @@ header {
 aside {
     display: flex;
     justify-content: center;
+    /* Align children to the start (left side) */
     align-items: center;
+    /* Center children vertically */
 }
 
-.container{
-
+.container {
     border: 1px solid transparent;
     background-image: linear-gradient(#161a20, #161a20), linear-gradient(to right, #4D7AB0, #C0C0C0, #4D7AB0);
     background-origin: border-box;
     background-clip: content-box, border-box;
     max-width: 1200px;
     padding: 20px;
-    margin: 20px auto; /* Centering the container */
+    margin: 20px auto;
     border-radius: 10px;
-    background: #131a2b; /* Base color */
-    box-shadow: 0 0 10px 0 rgba(81, 203, 238, 0.5); /* Glowing effect */
-    
-    
-}
-.media-card {
-
-    border: 1px solid transparent;
-    background-image: linear-gradient(#161a20, #161a20), linear-gradient(to right, #4D7AB0, #C0C0C0, #4D7AB0);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-    max-width: 1200px;
-    padding: 20px;
-    margin: 20px auto; /* Centering the container */
-    border-radius: 10px;
-    background: #131a2b; /* Base color */
-    box-shadow: 0 0 10px 0 rgba(81, 203, 238, 0.5); /* Glowing effect */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
-    
+    background: #131a2b;
+    box-shadow: 0 0 10px 0 rgba(81, 203, 238, 0.5);
 }
 
-
-.media-card:hover {
-    box-shadow: 0 0 15px 0 rgba(81, 203, 238, 0.75); /* Brighter glow on hover */
-    transform: translateY(-5px); /* Slight raise effect */
-}
-
+/* Subheadings in containers */
 .subheading {
+   
     font-size: 24px;
     margin-bottom: 15px;
     text-align: center;
+
     padding: 10px;
     border-radius: 7px;
      background: #0a0f1d url('./hts2.jpeg') no-repeat center center fixed; 
@@ -75,6 +52,7 @@ aside {
     
 }
 
+/* Media scoller */
 .media-scroller {
     display: flex;
     overflow-x: auto;
@@ -82,6 +60,8 @@ aside {
     scrollbar-width: thin;
 }
 
+
+/* Media cards */
 .media-card {
     flex-direction: column;
     align-items: center;
@@ -89,42 +69,55 @@ aside {
     margin-right: 15px;
     scroll-snap-align: start;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
+    background: #131a2b; /* Base color */
+    box-shadow: 0 0 8px 0 rgba(0, 76, 153, 0.6); /* Subtle glowing effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 100; /* Higher z-index for overlay */
+    position: relative; /* Required for z-index to take effect */
+    overflow: hidden; /* Hide any overflow */
 }
-
+.media-card:hover {
+    box-shadow: 0 0 15px 0 rgba(81, 204, 238, 0.289); /* Brighter glow on hover */
+    transform: translateY(-5px); /* Slight raise effect */
+}
 .media-card img {
     max-width: 100%; 
     max-height: 200px; 
-    object-fit: cover;
+    object-fit: cover; 
+    align-items: center;
 }
 
+.media-card p {
+    background-color: #333;
+    color: #ccc;
+    border-radius: 5px;
+    text-align: center;
+    flex: 1;
+}
+.media-card:hover {
+    box-shadow: 0 0 15px 0 rgba(81, 203, 238, 0.75);
+    transform: translateY(-5px);
+}
+/* Search Bar Styling */
 .search-element {
-     display: auto;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-    padding: 20px;
-    flex-direction: column;
-    position: relative;
-    background: rgba(19, 27, 43, 0.8); /* Translucent background with rgba */
-    box-shadow: 0 0 10px 0 rgba(81, 203, 238, 0.5); /* Glowing effect */
-    z-index: 100;
 }
 
-.search-element input, .search-element button {
+.search-element input {
     padding: 8px;
     margin-right: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
-    background-color: #4D7AB0; /* Vibrant blue background */
-    color: #ffffff; /* White text color for contrast */
-     opacity: 1; /* Ensure full visibility */
-    visibility: visible; /* Ensure it's not hidden */
 }
 
 .search-element button {
-    background-color: #4D7AB0; /* Bright blue */
+    padding: 8px 15px;
+    margin: auto;
+    background-color: #333;
     color: white;
     border: none;
     border-radius: 5px;
@@ -132,9 +125,21 @@ aside {
     width: 50%;
 }
 
-.search-element button:hover {
-    background-color: #5A8BC2;
-    box-shadow: 0 0 10px #4D7AB0;
+.search-element {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: relative;
 }
 .search-element h2 {
     -ms-flex-item-align: center;
@@ -156,8 +161,8 @@ aside {
     margin-bottom: 25px;
 }
 .search-list {
-    position: fixed;
-    left: 0;
+    position: flex;
+    right: 0;
     top: 100%;
     max-height: 500px;
     overflow-y: scroll;
@@ -304,22 +309,6 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-button, .subheading {
-    font-size: 18px;
-    font-weight: bold;
-    color: #ffffff;
-    text-transform: uppercase;
-    background-color: #0e1623;
-    border: none;
-    text-shadow: 0px 1px 1px #000;
-    box-shadow: 0 2px 5px #0e1623;
-}
-
-button:hover {
-    background-color: #1e3c72;
-    box-shadow: 0 0 10px #81d4fa;
 }
 
 /* Watch Trailer button */
